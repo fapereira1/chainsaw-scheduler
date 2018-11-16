@@ -2,8 +2,17 @@ pipeline {
   agent any
   stages {
     stage('Build') {
-      steps {
-        sh 'ls -lah'
+      parallel {
+        stage('Build') {
+          steps {
+            sh 'ls -lah'
+          }
+        }
+        stage('') {
+          steps {
+            echo 'running'
+          }
+        }
       }
     }
   }
